@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boussaid Delivery - خدمة التوصيل السريع والأمان</title>
+    <!-- استيراد خط كايو (Cairo) الاحترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* المتغيرات العامة والتصميم الأساسي */
+        :root {
+            --primary-blue: #0284c7;
+            --primary-dark: #0369a1;
+            --secondary-color: #0f172a;
+            --accent-color: #38bdf8;
+            --light-bg: #f8fafc;
+            --text-color: #334155;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+            background-color: #e2e8f0;
+        }
+
+        .logo-container h1 {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--secondary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-container h1 span {
+            color: var(--primary-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(2, 132, 199, 0.4);
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            padding: 160px 20px 100px;
+            background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.1), transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(2, 132, 199, 0.08), transparent 50%),
+                        var(--light-bg);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--primary-blue);
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
+            margin-bottom: 25px;
+            background-color: #e2e8f0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(2, 132, 199, 0.1);
+            color: var(--primary-blue);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero h2 span { color: var(--primary-blue); }
+
+        .hero p {
+            font-size: 17px;
+            color: #64748b;
+            margin-bottom: 35px;
+            max-width: 680px;
+        }
+
+        /* شريط الإحصائيات السريع */
+        .stats-bar {
+            max-width: 950px;
+            margin: -40px auto 80px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 30px;
+            font-weight: 900;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* قسم معلومات الاتصال والملصق */
+        .contact-banner-section {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .contact-banner-card {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border-radius: 28px;
+            padding: 45px;
+            color: #fff;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            text-align: right;
+        }
+
+        .info-side {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            width: 100%;
+        }
+
+        .info-side h3 {
+            font-size: 22px;
+            font-weight: 900;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+        }
+
+        .info-side h3 i { color: var(--accent-color); font-size: 22px; }
+        .info-side h3 span { color: var(--accent-color); }
+
+        .admin-details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .admin-info-item {
+            font-size: 13.5px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .admin-info-item i {
+            color: var(--accent-color);
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .phones-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .phone-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .phone-item i {
+            color: var(--success-color);
+            font-size: 16px;
+        }
+
+        .phone-item:hover {
+            background: rgba(2, 132, 199, 0.2);
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        .card-social-links {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .card-social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 10px;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .card-social-btn.facebook { background-color: #1877f2; }
+        .card-social-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .card-social-btn.tiktok { background-color: #000000; border: 1px solid rgba(255,255,255,0.2); }
+        .card-social-btn.whatsapp { background-color: #25d366; }
+        
+        .card-social-btn:hover { 
+            opacity: 0.92; 
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* --- قسم تحويل الموقع إلى تطبيق أندرويد --- */
+        .app-download-section {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .app-download-box {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            border-radius: 24px;
+            padding: 50px 40px;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-download-box h2 {
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        .app-download-box p {
+            font-size: 16px;
+            max-width: 650px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .download-action-wrapper {
+            width: 100%;
+            max-width: 380px;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .download-app-btn {
+            background: #ffffff;
+            color: var(--secondary-color);
+            padding: 16px 24px;
+            border-radius: 14px;
+            border: none;
+            font-size: 17px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-app-btn i {
+            color: var(--primary-blue);
+            font-size: 20px;
+        }
+
+        .download-app-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            background: #f8fafc;
+        }
+
+        .download-app-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.9;
+        }
+
+        .app-progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            width: 0%;
+            background: var(--success-color);
+            transition: width 0.1s linear;
+        }
+
+        .download-status-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            min-height: 22px;
+        }
+
+        /* قسم المميزات والخدمات */
+        .features {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            border-bottom: 4px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--primary-blue);
+            box-shadow: 0 15px 30px rgba(2, 132, 199, 0.08);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(2, 132, 199, 0.1);
+            color: var(--primary-blue);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 19px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* قسم نموذج الطلب الاحترافي */
+        .order-section {
+            background: linear-gradient(135deg, var(--secondary-color), #1e293b);
+            color: #fff;
+            padding: 90px 20px;
+        }
+
+        .order-container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            text-align: right;
+        }
+
+        .order-container h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .order-container > p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .order-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .form-group.store-name-group {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group label i { color: var(--accent-color); }
+
+        .order-form input, 
+        .order-form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            outline: none;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .order-form input:focus, 
+        .order-form textarea:focus {
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .order-form input::placeholder, 
+        .order-form textarea::placeholder { color: #64748b; }
+
+        /* زر الحوار (Dialog Trigger Button) */
+        .dialog-trigger-btn {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: #94a3b8;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .dialog-trigger-btn.selected {
+            color: #fff;
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .dialog-trigger-btn i { color: var(--accent-color); }
+
+        /* النافذة المنبثقة لاختيار الخدمة */
+        .service-dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .service-dialog-overlay.active { display: flex; }
+
+        .service-dialog-box {
+            background: #1e293b;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            text-align: right;
+        }
+
+        .service-dialog-header {
+            padding: 20px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-dialog-header h3 {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-dialog-header h3 i { color: var(--primary-blue); }
+
+        .dialog-close-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 18px;
+            cursor: pointer;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .dialog-close-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        .service-dialog-body {
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dialog-option-item {
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            color: #cbd5e1;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.25s ease;
+        }
+
+        .dialog-option-item:hover {
+            background: rgba(2, 132, 199, 0.15);
+            border-color: var(--primary-blue);
+            color: #fff;
+            transform: translateX(-4px);
+        }
+
+        .dialog-option-item.selected {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .dialog-option-item i { font-size: 18px; color: var(--accent-color); }
+        .dialog-option-item.selected i { color: #fff; }
+
+        /* زر إرسال الطلب */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
+            font-family: 'Cairo', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn i { font-size: 18px; transition: transform 0.3s ease; }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.5);
+        }
+
+        .submit-btn:disabled { cursor: not-allowed; opacity: 0.85; }
+
+        .btn-progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: var(--accent-color);
+            transition: width 0.1s linear;
+        }
+
+        /* نافذة نجاح إرسال الطلب */
+        .success-dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            padding: 20px;
+        }
+
+        .success-dialog-overlay.active { display: flex; }
+
+        .success-dialog-box {
+            background: #1e293b;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            padding: 35px 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .success-icon-wrapper {
+            width: 75px;
+            height: 75px;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .success-dialog-box h3 { font-size: 22px; font-weight: 900; color: #fff; }
+        .success-dialog-box p { font-size: 15px; color: #94a3b8; line-height: 1.6; margin-bottom: 10px; }
+
+        .success-dialog-btn {
+            width: 100%;
+            background: var(--success-color);
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 35px 20px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer span { color: var(--primary-blue); font-weight: 700; }
+
+        /* التجاوب مع شاشات الجوال */
+        @media (max-width: 992px) {
+            .admin-details-grid { grid-template-columns: 1fr; }
+            .phones-list { grid-template-columns: 1fr; }
+            .card-social-links { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero { padding-top: 130px; }
+            .hero h2 { font-size: 28px; }
+            .stats-bar { grid-template-columns: 1fr; margin: -20px 15px 50px; padding: 20px; }
+            .order-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر وشريط التنقل -->
+    <header>
+        <div class="navbar">
+            <div class="logo-container">
+                <img src="https://lh3.googleusercontent.com/d/1u9-srlcV5ByT5myRijER7ASUIAl4go50" alt="Bousaid Delivery Logo">
+                <h1>Boussaid <span>Delivery</span></h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#features">خدماتنا</a></li>
+                    <li><a href="#download">تطبيق الموقع</a></li>
+                    <li><a href="#order">حجز عملية</a></li>
+                </ul>
+            </nav>
+
+            <a href="#order" class="cta-btn">احجز الآن</a>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="https://lh3.googleusercontent.com/d/1u9-srlcV5ByT5myRijER7ASUIAl4go50" alt="Bousaid Delivery Logo" class="hero-logo">
+            
+            <span class="hero-badge">خدمة التوصيل الأولى والأضمن مدينة المشرية</span>
+            <h2>شريكك اللوجستي الأسرع والأكثر أماناً مع <span>Boussaid Delivery</span></h2>
+            <p>نوصل طلباتك، طرودك، ومشترياتك التجارية أو الشخصية بكل احترافية وسرعة إلى باب منزلك. دقة في المواعيد وأمان تام لممتلكاتك.</p>
+            <a href="#order" class="cta-btn" style="padding: 14px 30px; font-size: 16px; display: inline-block;">احجز عملية توصيل الآن</a>
+        </div>
+    </section>
+
+    <!-- إحصائيات سريعة -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <h3>+1000</h3>
+            <p>طلب تم توصيله بنجاح</p>
+        </div>
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>أمان وضمان للطرود</p>
+        </div>
+        <div class="stat-item">
+            <h3>24/7</h3>
+            <p>دعم فني ومتابعة</p>
+        </div>
+    </div>
+
+    <!-- قسم بطاقة معلومات الاتصال الشاملة -->
+    <section class="contact-banner-section">
+        <div class="contact-banner-card">
+            <div class="info-side">
+                <h3><i class="fas fa-user-shield"></i> بطاقة الإدارة والتواصل في <span>المشرية</span></h3>
+                
+                <div class="admin-details-grid">
+                    <div class="admin-info-item">
+                        <i class="fas fa-user-tie"></i> <span>إدارة Boussaid</span>
+                    </div>
+                    <div class="admin-info-item">
+                        <i class="fas fa-map-marker-alt"></i> <span>المشرية (Mecheria)</span>
+                    </div>
+                    <div class="admin-info-item">
+                        <i class="fas fa-hashtag"></i> <span>Delibouss</span>
+                    </div>
+                </div>
+
+                <div class="phones-list">
+                    <a href="tel:0556073520" class="phone-item">
+                        <i class="fas fa-phone-alt"></i> 0556.07.35.20
+                    </a>
+                    <a href="tel:0656642245" class="phone-item">
+                        <i class="fas fa-phone-alt"></i> 0656.64.22.45
+                    </a>
+                </div>
+
+                <div class="card-social-links">
+                    <a href="https://www.facebook.com/share/1CnwQ4jWcL/" target="_blank" class="card-social-btn facebook"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+                    <a href="https://www.instagram.com/delibouss?stkn=dWpwZnFsNGFwazY3" target="_blank" class="card-social-btn instagram"><i class="fab fa-instagram"></i> إنستغرام</a>
+                    <a href="https://www.tiktok.com/@abdou_boussaid?_r=1&_t=ZS-9A01GqN18y5" target="_blank" class="card-social-btn tiktok"><i class="fab fa-tiktok"></i> تيك توك</a>
+                    <a href="https://wa.me/213556073520" target="_blank" class="card-social-btn whatsapp"><i class="fab fa-whatsapp"></i> واتساب</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم تحويل الموقع وتنزيل تطبيق الأندرويد -->
+    <section class="app-download-section" id="download">
+        <div class="app-download-box">
+            <h2>تحويل الموقع إلى تطبيق أندرويد <span>WebView App</span></h2>
+            <p>قم بتوليد وتحميل تطبيق الهاتف الخاص بالمنصة للوصول السريع إلى خدمات التوصيل وتلقي الإشعارات الفورية مباشرة من هاتفك الذكي.</p>
+            
+            <div class="download-action-wrapper">
+                <button type="button" class="download-app-btn" id="downloadAppBtn" onclick="handleWebViewAppGeneration()">
+                    <i class="fas fa-mobile-alt" id="downloadIcon"></i>
+                    <span id="downloadBtnText">توليد وتحميل تطبيق الموقع (.APK)</span>
+                    <div class="app-progress-bar" id="appProgressBar"></div>
+                </button>
+                <div class="download-status-text" id="downloadStatusText">جاهز لتجميع ملف حزمة WebView</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات والخدمات -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>لماذا تختار Boussaid Delivery؟</h2>
+            <p>نقدم لك حلول توصيل متكاملة مصممة خصيصاً لتلبي احتياجاتك بأعلى معايير الجودة.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3>سرعة قياسية في التوصيل</h3>
+                <p>نمتلك شبكة سير منظمة تضمن وصول طرودك في أسرع وقت ممكن ودون أي تأخير.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>أمان تام وحماية للطلبات</h3>
+                <p>نتعامل مع كافة الشحنات والمنتجات بعناية فائقة تضمن وصولها بحالة مثالية تماماً.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                <h3>متابعة مستمرة ودعم</h3>
+                <p>فريق خدمة عملاء متواجد دائماً لمتابعة خط سير طلبك والإجابة على كافة استفساراتك.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم نموذج الطلب الاحترافي المحدث ليرسل البيانات إلى Formspree -->
+    <section class="order-section" id="order">
+        <div class="order-container">
+            <h2>احجز خدمة التوصيل الآن</h2>
+            <p>قم بتعبئة تفاصيل الطلب أدناه وسنتواصل معك فوراً لتأكيد التوصيل.</p>
+            
+            <form class="order-form" id="deliveryForm" action="https://formspree.io/f/xrpblkde" method="POST" onsubmit="handleFormSubmit(event)">
+                
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> الاسم الكامل</label>
+                    <input type="text" name="الاسم_الكامل" placeholder="أدخل اسمك الكريم" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> رقم الهاتف</label>
+                    <input type="tel" name="رقم_الهاتف" placeholder="أدخل رقم هاتفك للتواصل" required>
+                </div>
+
+                <!-- زر فتح نافذة الحوار لاختيار نوع الخدمة -->
+                <div class="form-group">
+                    <label><i class="fas fa-box"></i> نوع الخدمة أو الطلب</label>
+                    <button type="button" class="dialog-trigger-btn" id="dialogTriggerBtn">
+                        <span id="selectedDialogText">اختر نوع الخدمة...</span>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <input type="hidden" name="نوع_الخدمة" id="serviceTypeHidden" required>
+                </div>
+
+                <!-- نافذة الحوار المنبثقة -->
+                <div class="service-dialog-overlay" id="serviceDialogOverlay">
+                    <div class="service-dialog-box">
+                        <div class="service-dialog-header">
+                            <h3><i class="fas fa-th-list"></i> اختر نوع الخدمة المطلوبة</h3>
+                            <button type="button" class="dialog-close-btn" id="dialogCloseBtn"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="service-dialog-body">
+                            <div class="dialog-option-item" data-value="توصيل طلبات متجر / تجارة إلكترونية"><i class="fas fa-store"></i> توصيل طلبات متجر / تجارة إلكترونية</div>
+                            <div class="dialog-option-item" data-value="توصيل طرد / شحنة شخصية"><i class="fas fa-box-open"></i> توصيل طرد / شحنة شخصية</div>
+                            <div class="dialog-option-item" data-value="توصيل وجبات / مطاعم"><i class="fas fa-utensils"></i> توصيل وجبات / مطاعم</div>
+                            <div class="dialog-option-item" data-value="خدمة توصيل خاصة أخرى"><i class="fas fa-shipping-fast"></i> خدمة توصيل خاصة أخرى</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- حقل اسم المتجر -->
+                <div class="form-group store-name-group" id="storeGroup">
+                    <label><i class="fas fa-store"></i> اسم المتجر أو النشاط التجاري</label>
+                    <input type="text" name="اسم_المتجر" id="storeNameInput" placeholder="أدخل اسم المتجر الذي يتم جلب الطلب منه">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> مكان الاستلام (من أين؟)</label>
+                    <input type="text" name="مكان_الاستلام" placeholder="ادخل اسم المتجر أو الحي" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-map-pin"></i> مكان التسليم والوجهة (إلى أين؟)</label>
+                    <input type="text" name="مكان_التسليم" placeholder="عنوان المستلم موقع المسكن" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-clipboard-list"></i> قائمة الطلبات</label>
+                    <textarea name="قائمة_الطلبات" rows="3" placeholder="ادخل قائمة المشتريات بالتفصيل"></textarea>
+                </div>
+
+                <!-- زر الإرسال مع بروغرس بار -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">تأكيد وإرسال طلب التوصيل</span>
+                    <i class="fas fa-paper-plane" id="btnIcon"></i>
+                    <div class="btn-progress-bar" id="btnProgressBar"></div>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- نافذة نجاح إرسال الطلب -->
+    <div class="success-dialog-overlay" id="successDialogOverlay">
+        <div class="success-dialog-box">
+            <div class="success-icon-wrapper"><i class="fas fa-check"></i></div>
+            <h3>تم إرسال طلبك بنجاح!</h3>
+            <p>شكراً لثقتك بنا. لقد تلقينا تفاصيل طلبك وسنتواصل معك فوراً لتأكيد وتنسيق التوصيل.</p>
+            <button type="button" class="success-dialog-btn" id="successCloseBtn">حسناً، شكراً</button>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; <span style="color:var(--primary-blue);">KHBSR (Boussaid Delivery)</span></p>
+    </footer>
+
+    <!-- سكربت الجافاسكريبت -->
+    <script>
+        // محاكاة عملية توليد وتحميل تطبيق أندرويد للموقع (WebView)
+        function handleWebViewAppGeneration() {
+            const btn = document.getElementById('downloadAppBtn');
+            const icon = document.getElementById('downloadIcon');
+            const text = document.getElementById('downloadBtnText');
+            const progressBar = document.getElementById('appProgressBar');
+            const statusText = document.getElementById('downloadStatusText');
+
+            btn.disabled = true;
+            icon.className = "fas fa-spinner fa-spin";
+            text.innerHTML = "جاري تجميع حزمة WebView...";
+            statusText.innerHTML = "يرجى الانتظار، يتم ربط الموقع بتطبيق الأندرويد...";
+
+            let progress = 0;
+            progressBar.style.width = '0%';
+
+            const interval = setInterval(function() {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+
+                if (progress <= 35) {
+                    statusText.innerHTML = `جاري استخراج ملفات الموقع الأساسية... (${progress}%)`;
+                } else if (progress <= 75) {
+                    statusText.innerHTML = `تضمين بيئة التشغيل WebView وتكوين الأذونات... (${progress}%)`;
+                } else if (progress < 100) {
+                    statusText.innerHTML = `توقيع ملف التثبيت الرقمي APK... (${progress}%)`;
+                } else {
+                    clearInterval(interval);
+                    icon.className = "fas fa-check-circle";
+                    text.innerHTML = "تم تجهيز وتحميل التطبيق بنجاح!";
+                    statusText.innerHTML = "تم توليد وتنزيل تطبيق أندرويد الخاص بالموقع.";
+
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        icon.className = "fas fa-mobile-alt";
+                        text.innerHTML = "توليد وتحميل تطبيق الموقع (.APK)";
+                        progressBar.style.width = '0%';
+                        statusText.innerHTML = "جاهز لتجميع ملف حزمة WebView";
+                    }, 4000);
+                }
+            }, 50);
+        }
+
+        // تفاعل نافذة الحوار لاختيار الخدمة
+        const dialogTriggerBtn = document.getElementById('dialogTriggerBtn');
+        const serviceDialogOverlay = document.getElementById('serviceDialogOverlay');
+        const dialogCloseBtn = document.getElementById('dialogCloseBtn');
+        const selectedDialogText = document.getElementById('selectedDialogText');
+        const dialogOptions = document.querySelectorAll('.dialog-option-item');
+        const hiddenInput = document.getElementById('serviceTypeHidden');
+        const storeGroup = document.getElementById('storeGroup');
+        const storeInput = document.getElementById('storeNameInput');
+
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const btnProgressBar = document.getElementById('btnProgressBar');
+
+        const successDialogOverlay = document.getElementById('successDialogOverlay');
+        const successCloseBtn = document.getElementById('successCloseBtn');
+        const deliveryForm = document.getElementById('deliveryForm');
+
+        dialogTriggerBtn.addEventListener('click', () => serviceDialogOverlay.classList.add('active'));
+        dialogCloseBtn.addEventListener('click', () => serviceDialogOverlay.classList.remove('active'));
+        serviceDialogOverlay.addEventListener('click', (e) => { if (e.target === serviceDialogOverlay) serviceDialogOverlay.classList.remove('active'); });
+
+        dialogOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                selectedDialogText.innerHTML = this.innerHTML;
+                dialogTriggerBtn.classList.add('selected');
+                hiddenInput.value = value;
+
+                dialogOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                serviceDialogOverlay.classList.remove('active');
+
+                if (value.includes('متجر')) {
+                    storeGroup.style.display = 'flex';
+                    storeInput.setAttribute('required', 'required');
+                } else {
+                    storeGroup.style.display = 'none';
+                    storeInput.removeAttribute('required');
+                    storeInput.value = '';
+                }
+            });
+        });
+
+        // دالة الإرسال الفعلية عبر Formspree مع تأثير البروغرس بار ونافذة النجاح
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            btnText.innerHTML = "جاري إرسال الطلب...";
+            btnIcon.className = "fas fa-spinner fa-spin";
+            
+            let progress = 0;
+            btnProgressBar.style.width = '0%';
+
+            // محاكاة شريط التقدم السريع أثناء الإرسال
+            let progressInterval = setInterval(function() {
+                if (progress < 90) {
+                    progress += 10;
+                    btnProgressBar.style.width = progress + '%';
+                }
+            }, 50);
+
+            const formData = new FormData(deliveryForm);
+
+            fetch(deliveryForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                clearInterval(progressInterval);
+                btnProgressBar.style.width = '100%';
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    btnText.innerHTML = "تأكيد وإرسال طلب التوصيل";
+                    btnIcon.className = "fas fa-paper-plane";
+                    btnProgressBar.style.width = '0%';
+
+                    if (response.ok) {
+                        successDialogOverlay.classList.add('active');
+                        deliveryForm.reset();
+                        selectedDialogText.innerHTML = "اختر نوع الخدمة...";
+                        dialogTriggerBtn.classList.remove('selected');
+                        hiddenInput.value = "";
+                        storeGroup.style.display = 'none';
+                        dialogOptions.forEach(opt => opt.classList.remove('selected'));
+                    } else {
+                        alert('حدث خطأ أثناء إرسال الطلب، يرجى المحاولة مرة أخرى.');
+                    }
+                }, 300);
+            }).catch(error => {
+                clearInterval(progressInterval);
+                submitBtn.disabled = false;
+                btnText.innerHTML = "تأكيد وإرسال طلب التوصيل";
+                btnIcon.className = "fas fa-paper-plane";
+                btnProgressBar.style.width = '0%';
+                alert('تعذر الاتصال بالخادم، تحقق من اتصالك بالإنترنت.');
+            });
+        }
+
+        successCloseBtn.addEventListener('click', () => successDialogOverlay.classList.remove('active'));
+        successDialogOverlay.addEventListener('click', (e) => { if (e.target === successDialogOverlay) successDialogOverlay.classList.remove('active'); });
+    </script>
+
+</body>
+</html>
