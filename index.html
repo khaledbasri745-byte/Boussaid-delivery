@@ -1093,7 +1093,7 @@
 
     <!-- سكربت الجافاسكريبت -->
     <script>
-        // محاكاة عملية توليد وتحميل تطبيق أندرويد للموقع (WebView)
+        // دالة توليد وتحميل تطبيق أندرويد للموقع مع التوجيه للرابط الفعلي
         function handleWebViewAppGeneration() {
             const btn = document.getElementById('downloadAppBtn');
             const icon = document.getElementById('downloadIcon');
@@ -1123,7 +1123,12 @@
                     clearInterval(interval);
                     icon.className = "fas fa-check-circle";
                     text.innerHTML = "تم تجهيز وتحميل التطبيق بنجاح!";
-                    statusText.innerHTML = "تم توليد وتنزيل تطبيق أندرويد الخاص بالموقع.";
+                    statusText.innerHTML = "جاري بدء تنزيل ملف التطبيق المباشر...";
+
+                    // التوجيه المباشر لرابط التحميل الحقيقي بعد اكتمال المحاكاة
+                    setTimeout(() => {
+                        window.location.href = "https://1pgt5wjq9slq.bosfiles.net/download/5zC1Szyh0fu4qEyQO0xTUg";
+                    }, 1000);
 
                     setTimeout(() => {
                         btn.disabled = false;
@@ -1191,7 +1196,6 @@
             let progress = 0;
             btnProgressBar.style.width = '0%';
 
-            // محاكاة شريط التقدم السريع أثناء الإرسال
             let progressInterval = setInterval(function() {
                 if (progress < 90) {
                     progress += 10;
